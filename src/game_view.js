@@ -5,11 +5,20 @@ function GameView(ctx) {
 }
 
 GameView.prototype.start = function() {
-  const ga = new Game();
+  this.game = new Game();
+  this.bindKeyHandlers();
   setInterval(() => {
-    ga.step();
-    ga.draw(this.ctx);
+    this.game.step();
+    this.game.draw(this.ctx);
   }, 20);
+};
+
+GameView.prototype.bindKeyHandlers = function() {
+  const ship = this.game.ship;
+  key("w", function () { ship.power([0, -1]) });
+  key("a", function () { ship.power([-1, 0]) });
+  key("s", function () { ship.power([0, 1]) });
+  key("d", function () { ship.power([1, 0]) });
 };
 
 
