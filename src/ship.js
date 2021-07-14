@@ -15,7 +15,6 @@ Ship.RADIUS = 15;
 Ship.COLOR = "#67EEFF";
 
 Ship.prototype.relocate = function () {
-  debugger;
   this.pos = this.game.randomPosition();
   this.vel = [0,0];
 };
